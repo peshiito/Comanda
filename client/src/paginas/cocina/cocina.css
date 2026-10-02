@@ -1,0 +1,162 @@
+/* =========================================================================
+   Pantalla de cocina. Se lee a dos metros y se toca con el dorso de la mano.
+   Todo acá es más grande que en el resto del sistema, a propósito.
+   ========================================================================= */
+
+.kds {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--e3);
+  padding: var(--e3);
+  align-items: start;
+}
+
+.comanda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e3);
+  padding: var(--e4);
+  background: var(--sup-1);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r3);
+  /* El semáforo vive en una barra gruesa arriba: es lo primero que se ve */
+  border-top: 5px solid var(--linea-viva);
+}
+
+.comanda > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--e3);
+}
+
+.comanda-mesa {
+  font-size: var(--t-28);
+  font-variation-settings: 'wght' 620;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.comanda-reloj {
+  font-size: var(--t-28);
+  font-variation-settings: 'wght' 500;
+  line-height: 1;
+  color: var(--tinta-3);
+  letter-spacing: -0.04em;
+}
+
+/* Semáforo de demora: lo calcula el servidor, nadie lo escribe */
+.nivel-verde { border-top-color: var(--verde); }
+.nivel-amarillo { border-top-color: var(--amarillo); }
+.nivel-amarillo .comanda-reloj { color: var(--amarillo); }
+.nivel-naranja { border-top-color: var(--naranja); }
+.nivel-naranja .comanda-reloj { color: var(--naranja); }
+.nivel-rojo { border-top-color: var(--rojo); background: var(--rojo-tenue); }
+.nivel-rojo .comanda-reloj { color: var(--rojo); font-variation-settings: 'wght' 600; }
+
+.comanda.urgente { border-color: var(--marca-linea); }
+
+.comanda-bandera {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--t-13);
+  font-variation-settings: 'wght' 620;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--marca-viva);
+}
+
+.comanda-nota {
+  padding: var(--e2) var(--e3);
+  border-left: 3px solid var(--amarillo);
+  border-radius: 0 var(--r1) var(--r1) 0;
+  background: var(--amarillo-tenue);
+  color: var(--amarillo);
+  font-size: var(--t-14);
+  font-variation-settings: 'wght' 540;
+}
+
+.comanda-items {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.comanda-items > li {
+  display: flex;
+  gap: var(--e3);
+  padding: var(--e3) 0;
+  border-bottom: 1px solid var(--linea);
+}
+.comanda-items > li:first-child { padding-top: 0; }
+.comanda-items > li:last-child { border-bottom: none; padding-bottom: 0; }
+
+.comanda-cant {
+  flex-shrink: 0;
+  min-width: 34px;
+  font-size: var(--t-22);
+  font-variation-settings: 'wght' 500;
+  color: var(--tinta-2);
+}
+.comanda-cant::after { content: '×'; color: var(--tinta-4); font-size: var(--t-14); }
+
+.comanda-plato {
+  display: block;
+  font-size: var(--t-18);
+  font-variation-settings: 'wght' 560;
+  line-height: 1.25;
+}
+
+/* Los modificadores son la parte que más se equivoca: van en naranja y grandes */
+.comanda-mods {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--t-14);
+  font-variation-settings: 'wght' 540;
+  color: var(--marca-viva);
+}
+
+.comanda-aclara {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--t-14);
+  font-variation-settings: 'wght' 560;
+  color: var(--amarillo);
+}
+
+.comanda-pie { display: flex; gap: var(--e2); }
+
+.comanda-listo {
+  flex: 1;
+  min-height: 66px;
+  font-size: var(--t-16);
+  font-variation-settings: 'wght' 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.comanda-agotar { min-height: 66px; width: 58px; color: var(--tinta-3); }
+.comanda-agotar:hover { color: var(--rojo); }
+
+.cocina-deshacer {
+  display: flex;
+  gap: var(--e2);
+  padding: var(--e2) var(--e3);
+  background: var(--verde-tenue);
+  border-bottom: 1px solid var(--verde-linea);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cocina-deshacer::-webkit-scrollbar { display: none; }
+
+/* Reloj de pared: la cocina lo usa para cantar los tiempos en voz alta */
+.cocina-reloj {
+  font-family: var(--titulo);
+  font-size: var(--t-28);
+  font-variation-settings: "wght" 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #fff;
+}

@@ -1,0 +1,93 @@
+/* ---- Campos ---- */
+.campo { display: flex; flex-direction: column; gap: var(--e2); }
+.campo > span,
+.campo > label {
+  font-size: var(--t-13);
+  font-variation-settings: 'wght' 500;
+  color: var(--tinta-2);
+}
+
+.campo input,
+.campo select,
+.campo textarea,
+.entrada {
+  width: 100%;
+  min-height: var(--toque);
+  padding: var(--e2) var(--e3);
+  background: var(--sup-1);
+  border: 1px solid var(--linea);
+  border-radius: var(--r2);
+  color: var(--tinta);
+  transition: border-color var(--rapido), box-shadow var(--rapido);
+}
+
+.campo input::placeholder,
+.entrada::placeholder { color: var(--tinta-3); }
+
+/* Foco: borde de marca más un halo tenue. El halo hace que el campo activo
+   se vea desde lejos, que es como se mira una caja en pleno servicio. */
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus,
+.entrada:focus {
+  outline: none;
+  border-color: var(--marca);
+  box-shadow: 0 0 0 2px var(--marca-tenue);
+}
+
+.campo select {
+  appearance: none;
+  background-color: var(--sup-1);
+  background-image: linear-gradient(45deg, transparent 50%, var(--tinta-3) 50%),
+    linear-gradient(135deg, var(--tinta-3) 50%, transparent 50%);
+  background-position: calc(100% - 17px) 52%, calc(100% - 12px) 52%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: var(--e6);
+}
+
+input[type='number'] { -moz-appearance: textfield; }
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Va en su propia línea: casi siempre cuelga de una etiqueta o de una casilla,
+   y pegado al texto principal se lee como una sola frase corrida. */
+.campo-ayuda {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--t-12);
+  color: var(--tinta-3);
+}
+
+/* Casilla propia: la nativa no se puede estilar */
+.casilla { display: flex; align-items: flex-start; gap: var(--e3); cursor: pointer; }
+.casilla input { position: absolute; opacity: 0; width: 0; height: 0; }
+.casilla .marca {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border: 1.5px solid var(--linea-fuerte);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: var(--sup-1);
+  transition: background var(--rapido), border-color var(--rapido);
+}
+.casilla input:checked + .marca {
+  background: var(--marca);
+  border-color: var(--marca);
+  color: #fff;
+}
+.casilla input:focus-visible + .marca { outline: 2px solid var(--marca); outline-offset: 2px; }
+.casilla .marca svg { opacity: 0; transition: opacity var(--rapido); }
+.casilla input:checked + .marca svg { opacity: 1; }
+
+/* Paso a paso numérico: comensales, cantidad */
+.contador { display: flex; align-items: stretch; gap: var(--e2); }
+.contador input {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-22);
+  font-variation-settings: 'wght' 600;
+}

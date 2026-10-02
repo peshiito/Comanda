@@ -1,0 +1,227 @@
+/* ---- Barra superior ---- */
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  min-height: 56px;
+  padding: var(--e2) var(--e4);
+  padding-top: max(var(--e2), env(safe-area-inset-top));
+  background: color-mix(in srgb, var(--sup-1) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--linea);
+}
+
+.barra h1 { font-size: var(--t-16); }
+.barra-nav { display: flex; gap: 2px; }
+
+.barra-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 2.125rem;
+  padding: 0 var(--e3);
+  border-radius: var(--r1);
+  color: var(--tinta-3);
+  text-decoration: none;
+  font-size: var(--t-13);
+  font-variation-settings: 'wght' 500;
+  transition: background var(--rapido), color var(--rapido);
+}
+.barra-nav a:hover { background: var(--sup-2); color: var(--tinta); }
+.barra-nav a[aria-current='page'] { background: var(--marca-tenue); color: var(--marca-texto); }
+.barra-nav a[aria-current='page'] svg { color: var(--marca); }
+.barra-nav a[aria-current='page'] { font-variation-settings: 'wght' 600; }
+
+@media (max-width: 720px) {
+  .barra { gap: var(--e2); padding-inline: var(--e3); }
+  .barra-nav a span { display: none; }
+  .barra-nav a { padding: 0 var(--e2); }
+}
+
+/* ---- Pestañas ---- */
+/* ---- Pestañas ----
+   Envuelven en varias filas en vez de scrollear en horizontal. El scroll
+   lateral sin barra visible escondía categorías enteras —la caja no
+   encontraba "Bebidas"— y en una pantalla de cobro no se puede perder un
+   rubro porque no entró en el ancho. Dos filas visibles son mejores que una
+   fila con la mitad afuera. */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px;
+  background: var(--sup-2);
+  border: 1px solid var(--linea);
+  border-radius: var(--r2);
+}
+
+.tab {
+  flex-shrink: 0;
+  height: 2.125rem;
+  padding: 0 var(--e3);
+  border: 0;
+  border-radius: var(--r1);
+  background: transparent;
+  color: var(--tinta-3);
+  font-size: var(--t-13);
+  font-variation-settings: 'wght' 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--rapido), color var(--rapido), box-shadow var(--rapido);
+}
+.tab:hover { color: var(--tinta); }
+.tab[aria-selected='true'] {
+  background: var(--sup-1);
+  color: var(--tinta);
+  font-variation-settings: 'wght' 600;
+  box-shadow: var(--sombra-sutil);
+}
+
+/* ---- Riel lateral (sólo escritorio) ----
+   72px en modo icónico. La sección activa se marca con el contenedor naranja
+   más una pestaña al borde: de reojo, desde la caja, se ve dónde estás. */
+.riel { display: none; }
+
+@media (min-width: 900px) {
+  .riel {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--e5);
+    width: 72px;
+    padding: var(--e4) 0;
+    padding-bottom: max(var(--e4), env(safe-area-inset-bottom));
+    background: var(--sup-1);
+    border-right: 1px solid var(--linea);
+  }
+
+  /* El contenido se corre para dejarle el lugar al riel */
+  body:has(.riel) { padding-left: 72px; }
+
+  /* La navegación de la barra de arriba sería redundante */
+  body:has(.riel) .barra-nav { display: none; }
+}
+
+.riel-marca { display: grid; place-items: center; color: var(--marca); flex-shrink: 0; }
+
+.riel-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--e2);
+  flex: 1;
+  min-height: 0;
+}
+
+.riel-link {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--toque);
+  height: var(--toque);
+  border-radius: var(--r2);
+  color: var(--tinta-3);
+  text-decoration: none;
+  transition: background var(--rapido), color var(--rapido);
+}
+.riel-link:hover { background: var(--sup-2); color: var(--tinta); }
+
+.riel-link.active {
+  background: var(--marca-tenue);
+  color: var(--marca);
+}
+/* Pestaña indicadora pegada al borde izquierdo */
+.riel-link.active::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 22px;
+  border-radius: 0 var(--r-pill) var(--r-pill) 0;
+  background: var(--marca);
+}
+
+/* El nombre de la sección lo lee el lector de pantalla; en pantalla queda el ícono */
+.riel-texto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.riel-pie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--e2);
+  flex-shrink: 0;
+}
+
+.riel-avatar {
+  display: grid;
+  place-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: var(--r-pill);
+  background: var(--sup-3);
+  color: var(--tinta-2);
+  font-size: var(--t-12);
+  font-variation-settings: 'wght' 600;
+  letter-spacing: 0.02em;
+  cursor: default;
+}
+
+.riel-salir {
+  display: grid;
+  place-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border: 0;
+  border-radius: var(--r2);
+  background: transparent;
+  color: var(--tinta-3);
+  cursor: pointer;
+  transition: background var(--rapido), color var(--rapido);
+}
+.riel-salir:hover { background: var(--rojo-tenue); color: var(--rojo); }
+
+@media (min-width: 900px) {
+  /* El isotipo ya lo pone el riel: en la barra sería el mismo signo dos veces */
+  body:has(.riel) .barra > .marca-signo { display: none; }
+}
+
+/* ---- Barra oscura: sólo la cocina ----
+   El televisor de la cocina se mira de lejos y con luz dura encima. La barra
+   oscura le da un marco fijo a la pantalla y separa el reloj de los tickets. */
+.barra-oscura {
+  background: var(--tinta);
+  border-bottom-color: var(--tinta);
+  color: #fff;
+}
+.barra-oscura h1 { color: #fff; }
+.barra-oscura p { color: rgba(255, 255, 255, 0.55); }
+.barra-oscura .marca-signo { color: var(--marca); }
+.barra-oscura .btn-plano { color: rgba(255, 255, 255, 0.7); }
+.barra-oscura .btn-plano:hover:not(:disabled) { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.barra-oscura .barra-nav a { color: rgba(255, 255, 255, 0.6); }
+.barra-oscura .barra-nav a:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.barra-oscura .barra-nav a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}

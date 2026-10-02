@@ -1,0 +1,180 @@
+/* =========================================================================
+   Comanda — sistema de diseño
+
+   Dirección: minimalismo culinario editorial sobre SaaS cálido y moderno.
+   Base de tiza cálida (#F6F6F4) con tarjetas blancas y bordes de 1px bien
+   nítidos. El color sólo aparece cuando significa algo: el naranja es la
+   marca y la acción, y el resto es semáforo operativo.
+
+   Tres capas: primitivas (valores crudos) → semánticas (propósito) →
+   componentes. Nunca poner un hex suelto en una hoja de componente.
+   ========================================================================= */
+
+:root {
+  /* =======================================================================
+     CAPA 1 — PRIMITIVAS
+     Valores crudos. No se usan directamente en los componentes.
+     ======================================================================= */
+
+  /* Neutros de tiza cálida */
+  --c-tiza-50: #ffffff;
+  --c-tiza-100: #f6f6f4;
+  --c-tiza-200: #ecece8;
+  --c-tiza-300: #e0e0da;
+  --c-tiza-400: #c8c8c0;
+  --c-tiza-500: #9ca3af;
+  --c-tiza-600: #6b7280;
+  --c-tiza-700: #4b5563;
+  --c-tiza-900: #16181d;
+
+  /* Naranja fuego cítrico — marca y acción */
+  --c-naranja-100: #fef0e8;
+  --c-naranja-300: #f7c9ab;
+  --c-naranja-600: #ea580c;
+  --c-naranja-700: #c2410c;
+  --c-naranja-800: #9a3412;
+
+  /* Verde — despacho, cobrado, cuadró */
+  --c-verde-100: #e8f6ec;
+  --c-verde-300: #a7dcb8;
+  --c-verde-600: #16a34a;
+  --c-verde-700: #15803d;
+  --c-verde-800: #166534;
+
+  /* Ámbar — demora, en espera */
+  --c-ambar-100: #fef6e7;
+  --c-ambar-300: #f5d491;
+  --c-ambar-600: #f59e0b;
+  --c-ambar-800: #b45309;
+
+  /* Rojo — anulado, agotado, destructivo */
+  --c-rojo-100: #fdecec;
+  --c-rojo-300: #f2b0b2;
+  --c-rojo-600: #e5484d;
+  --c-rojo-700: #d9383e;
+  --c-rojo-800: #b42318;
+
+  /* Azul — informativo, reservas */
+  --c-azul-100: #eaf1fe;
+  --c-azul-300: #a8c6f8;
+  --c-azul-600: #3b82f6;
+  --c-azul-800: #1d4ed8;
+
+  /* =======================================================================
+     CAPA 2 — SEMÁNTICAS
+     Lo que usan los componentes.
+     ======================================================================= */
+
+  /* --- Superficies: de la más hundida a la más elevada --- */
+  --lienzo: var(--c-tiza-100);
+  --sup-1: var(--c-tiza-50);
+  --sup-2: var(--c-tiza-100);
+  --sup-3: var(--c-tiza-200);
+  --sup-alto: var(--c-tiza-50);
+
+  /* --- Líneas: la estructura la arman los bordes, no las sombras --- */
+  --linea: var(--c-tiza-200);
+  --linea-fuerte: var(--c-tiza-300);
+  --linea-viva: var(--c-tiza-400);
+
+  /* --- Tinta en cuatro niveles de contraste sobre blanco ---
+     16:1 · 8.6:1 · 5:1 · 2.6:1. Los tres primeros pasan AA y sirven para
+     contenido; el cuarto es sólo decorativo (separadores, el número de una
+     mesa libre, los placeholders) y nunca lleva algo que haya que leer. */
+  --tinta: var(--c-tiza-900);
+  --tinta-2: var(--c-tiza-700);
+  --tinta-3: var(--c-tiza-600);
+  --tinta-4: var(--c-tiza-500);
+
+  /* --- Marca: el naranja es acción, no estado decorativo --- */
+  --marca: var(--c-naranja-600);
+  --marca-viva: var(--c-naranja-700);
+  --marca-tenue: var(--c-naranja-100);
+  --marca-linea: var(--c-naranja-300);
+  --marca-texto: var(--c-naranja-800);
+
+  /* --- Semáforo operativo --- */
+  --verde: var(--c-verde-600);
+  --verde-vivo: var(--c-verde-700);
+  --verde-tenue: var(--c-verde-100);
+  --verde-linea: var(--c-verde-300);
+  --verde-texto: var(--c-verde-800);
+
+  --amarillo: var(--c-ambar-600);
+  --amarillo-tenue: var(--c-ambar-100);
+  --amarillo-linea: var(--c-ambar-300);
+  --amarillo-texto: var(--c-ambar-800);
+
+  --naranja: var(--c-naranja-600);
+  --naranja-tenue: var(--c-naranja-100);
+  --naranja-linea: var(--c-naranja-300);
+
+  --rojo: var(--c-rojo-600);
+  --rojo-vivo: var(--c-rojo-700);
+  --rojo-tenue: var(--c-rojo-100);
+  --rojo-linea: var(--c-rojo-300);
+  --rojo-texto: var(--c-rojo-800);
+
+  --azul: var(--c-azul-600);
+  --azul-tenue: var(--c-azul-100);
+  --azul-linea: var(--c-azul-300);
+  --azul-texto: var(--c-azul-800);
+
+  /* --- Tipografía --- */
+  --titulo: 'Epilogue Variable', system-ui, -apple-system, sans-serif;
+  --fuente: 'Plus Jakarta Sans Variable', system-ui, -apple-system, sans-serif;
+  /* Reservada para el ticket térmico, que imita una impresora de verdad.
+     Va con la monoespaciada del sistema: no vale empaquetar una fuente
+     entera para una pantalla que todavía no existe. */
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --t-11: 0.6875rem;
+  --t-12: 0.75rem;
+  --t-13: 0.8125rem;
+  --t-14: 0.875rem;
+  --t-16: 1rem;
+  --t-18: 1.125rem;
+  --t-22: 1.375rem;
+  --t-28: 1.75rem;
+  --t-38: 2.375rem;
+
+  /* --- Grilla de 4px, en rem para que acompañe al tamaño de la letra ---
+     Van en rem y no en px a propósito: el tamaño de toda la interfaz se
+     regula desde un solo lugar (`html { font-size }` en base.css) y el aire
+     entre las cosas crece con el texto. Si fueran px, agrandar la letra
+     apretaría el layout en vez de estirarlo. */
+  --e1: 0.25rem;
+  --e2: 0.5rem;
+  --e3: 0.75rem;
+  --e4: 1rem;
+  --e5: 1.5rem;
+  --e6: 2rem;
+  --e7: 3rem;
+
+  /* --- Radios: 10px en controles, 14px en contenedores --- */
+  --r1: 8px;
+  --r2: 10px;
+  --r3: 14px;
+  --r-pill: 999px;
+
+  /* --- Profundidad: oclusión ambiental suave en dos etapas --- */
+  --sombra-1: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 16px rgba(16, 24, 40, 0.06);
+  --sombra-2: 0 4px 6px -1px rgba(16, 24, 40, 0.08), 0 12px 24px -4px rgba(16, 24, 40, 0.1);
+  --sombra-flota: 0 20px 25px -5px rgba(16, 24, 40, 0.12), 0 8px 10px -6px rgba(16, 24, 40, 0.06);
+  --sombra-sutil: 0 1px 2px rgba(16, 24, 40, 0.04);
+
+  /* --- Velo de los modales --- */
+  --velo: rgba(22, 24, 29, 0.35);
+
+  /* --- Movimiento: rápido y sin rebote --- */
+  --curva: cubic-bezier(0.25, 1, 0.5, 1);
+  --rapido: 130ms var(--curva);
+  --normal: 200ms var(--curva);
+
+  /* --- Toque: el mozo usa el pulgar caminando ---
+     44px es el piso a 16px de base; en rem sube solo si se agranda todo. */
+  --toque: 2.75rem;
+  --toque-grande: 3.5rem;
+
+  color-scheme: light;
+}

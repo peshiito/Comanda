@@ -1,0 +1,32 @@
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e3);
+}
+
+.marca-signo {
+  display: grid;
+  place-items: center;
+  color: var(--marca);
+}
+
+.marca-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.marca-texto strong {
+  font-size: calc(var(--marca-tam) * 0.62);
+  font-variation-settings: 'wght' 600;
+  letter-spacing: -0.03em;
+  color: var(--tinta);
+}
+
+.marca-sub {
+  font-size: var(--t-11);
+  font-variation-settings: 'wght' 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-3);
+}

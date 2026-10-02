@@ -1,0 +1,190 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+/**
+ * La perilla del tamaño de TODA la interfaz.
+ *
+ * Los tokens de texto, espaciado y área de toque están en rem, así que este
+ * número los mueve a todos juntos y las proporciones no cambian. 18px es
+ * ~12% más grande que el default del navegador: un POS se mira de pie, a
+ * medio brazo de distancia y muchas veces de reojo, así que conviene pasarse
+ * de grande antes que quedarse corto.
+ *
+ * Si querés más o menos, es acá y nada más que acá.
+ */
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--lienzo);
+  color: var(--tinta);
+  font-family: var(--fuente);
+  font-size: var(--t-14);
+  font-variation-settings: 'wght' 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: none;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--titulo);
+  font-variation-settings: 'wght' 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--t-22); }
+h2 { font-size: var(--t-18); }
+h3 { font-size: var(--t-16); }
+h4 { font-size: var(--t-14); }
+
+p { margin: 0; }
+ul, ol { margin: 0; }
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  font-family: var(--fuente);
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--marca);
+  outline-offset: 2px;
+  border-radius: var(--r1);
+}
+
+/* El texto seleccionado no puede perder contraste sobre fondo claro */
+
+::selection {
+  background: var(--marca-tenue);
+  color: var(--marca-viva);
+}
+
+/* Scrollbars discretas: la pantalla de caja tiene varias a la vez */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--linea-viva) transparent;
+}
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: var(--linea-fuerte);
+  border-radius: var(--r-pill);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover { background-clip: content-box; background-color: var(--linea-viva); }
+
+/* ---- Utilidades de layout ---- */
+.pila { display: flex; flex-direction: column; gap: var(--e3); }
+.pila-2 { display: flex; flex-direction: column; gap: var(--e2); }
+.fila { display: flex; align-items: center; gap: var(--e2); }
+.fila-sep { display: flex; align-items: center; justify-content: space-between; gap: var(--e2); }
+.fila-arriba { align-items: flex-start; }
+.envolver { flex-wrap: wrap; }
+.crece { flex: 1; min-width: 0; }
+
+/* ---- Tipografía ---- */
+.mono {
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'wght' 500;
+  letter-spacing: -0.01em;
+}
+.tenue { color: var(--tinta-2); }
+.tenue-3 { color: var(--tinta-3); }
+.tenue-4 { color: var(--tinta-4); }
+.t11 { font-size: var(--t-11); }
+.t12 { font-size: var(--t-12); }
+.t13 { font-size: var(--t-13); }
+.t18 { font-size: var(--t-18); }
+.t22 { font-size: var(--t-22); }
+.t28 { font-size: var(--t-28); }
+.medio { font-variation-settings: 'wght' 520; }
+.fuerte { font-variation-settings: 'wght' 600; }
+.centro { text-align: center; }
+.derecha { text-align: right; }
+.cortar { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dos-lineas {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rotulo {
+  font-size: var(--t-11);
+  font-variation-settings: 'wght' 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--tinta-3);
+}
+
+/* ---- Estados vacíos ---- */
+.vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--e2);
+  padding: var(--e7) var(--e4);
+  text-align: center;
+  color: var(--tinta-3);
+}
+.vacio svg { color: var(--tinta-4); }
+.vacio strong { color: var(--tinta-2); font-variation-settings: 'wght' 520; }
+
+/* ---- Estructura de página ---- */
+.contenido {
+  padding: var(--e4);
+  padding-bottom: calc(var(--e7) + env(safe-area-inset-bottom));
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.contenido-ancho { max-width: none; }
+
+@media (max-width: 560px) {
+  .contenido { padding: var(--e3); padding-bottom: calc(var(--e7) + env(safe-area-inset-bottom)); }
+}
+
+/* ---- Accesibilidad ---- */
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

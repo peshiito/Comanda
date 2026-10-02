@@ -1,0 +1,149 @@
+/* =========================================================================
+   Entrada al sistema.
+
+   En escritorio se parte en dos: a la izquierda el panel editorial oscuro con
+   la marca, a la derecha el formulario sobre el lienzo claro. En celular el
+   panel desaparece — el mozo entra con el PIN y no necesita presentación.
+   ========================================================================= */
+.login {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Panel editorial (izquierda, sólo escritorio) ---- */
+.login-editorial { display: none; }
+
+/* ---- Lado del formulario ---- */
+.login-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e4);
+  padding: var(--e5) var(--e4);
+  background: var(--lienzo);
+}
+
+.login-caja {
+  width: min(380px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e5);
+}
+
+/* En celular la caja sí necesita cuerpo propio, porque no hay panel al lado */
+@media (max-width: 899px) {
+  .login-caja {
+    width: min(420px, 100%);
+    padding: var(--e5);
+    background: var(--sup-1);
+    border: 1px solid var(--linea);
+    border-radius: var(--r3);
+    box-shadow: var(--sombra-1);
+  }
+}
+
+.login-titulo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e1);
+}
+.login-titulo h1 { font-size: var(--t-22); }
+.login-titulo p { color: var(--tinta-2); font-size: var(--t-13); }
+
+.login-usuarios { display: grid; gap: var(--e2); }
+
+.login-usuario {
+  justify-content: flex-start;
+  gap: var(--e3);
+  min-height: 3.625rem;
+  padding: var(--e2) var(--e3);
+  background: var(--sup-1);
+  border-color: var(--linea);
+}
+.login-usuario:hover:not(:disabled) { background: var(--sup-2); border-color: var(--linea-viva); }
+
+.login-avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: var(--r2);
+  background: var(--sup-3);
+  color: var(--tinta-2);
+}
+
+.login-nombre {
+  display: block;
+  font-size: var(--t-14);
+  font-variation-settings: 'wght' 600;
+  color: var(--tinta);
+}
+
+/* Aviso de que el sistema no depende de internet: es el argumento de venta,
+   así que se lee, no se insinúa. */
+.login-local {
+  display: flex;
+  align-items: center;
+  gap: var(--e2);
+  padding: var(--e2) var(--e3);
+  border-radius: var(--r2);
+  background: var(--verde-tenue);
+  color: var(--verde-texto);
+  font-size: var(--t-12);
+}
+.login-local .punto { background: var(--verde); }
+
+.login-pie {
+  max-width: 380px;
+  text-align: center;
+  color: var(--tinta-3);
+}
+
+@media (min-width: 900px) {
+  .login { flex-direction: row; }
+
+  .login-editorial {
+    display: flex;
+    flex: 0 0 58%;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--e6);
+    padding: var(--e7);
+    background: var(--tinta);
+    color: #fff;
+  }
+
+  .login-editorial .marca-signo { color: var(--marca); }
+  .login-editorial .marca-texto strong { color: #fff; }
+  .login-editorial .marca-sub { color: rgba(255, 255, 255, 0.55); }
+
+  .login-lema {
+    max-width: 22ch;
+    font-family: var(--titulo);
+    font-size: var(--t-38);
+    font-variation-settings: 'wght' 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .login-lema span { color: rgba(255, 255, 255, 0.5); }
+
+  .login-version {
+    font-size: var(--t-12);
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .login-panel { flex: 1; padding: var(--e7); }
+  .login-pie { display: none; }
+}
+
+.login-local-caido {
+  background: var(--rojo-tenue);
+  color: var(--rojo-texto);
+}
+.login-local-caido .punto { background: var(--rojo); }

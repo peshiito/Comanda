@@ -1,0 +1,101 @@
+/* ---- Botones ----
+   Altura mínima de 44px en todos: el mozo los toca con el pulgar caminando
+   y la caja los toca apurada. Nunca bajar de ahí. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e2);
+  min-height: var(--toque);
+  padding: 0 var(--e5);
+  border: 1px solid var(--linea);
+  border-radius: var(--r2);
+  background: var(--sup-1);
+  color: var(--tinta);
+  font-size: var(--t-14);
+  font-variation-settings: 'wght' 500;
+  letter-spacing: -0.006em;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background var(--rapido), border-color var(--rapido), color var(--rapido),
+    transform var(--rapido), box-shadow var(--rapido);
+}
+
+.btn:hover:not(:disabled) { background: var(--lienzo); border-color: var(--linea-fuerte); }
+.btn:active:not(:disabled) { transform: scale(0.99); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Primario: el naranja de marca. Es la acción que el sistema quiere que pases. */
+.btn-primario {
+  background: var(--marca);
+  border-color: var(--marca);
+  color: #fff;
+  font-variation-settings: 'wght' 600;
+}
+.btn-primario:hover:not(:disabled) { background: var(--marca-viva); border-color: var(--marca-viva); }
+/* Deshabilitado tiene que dejar de gritar, no sólo aclararse */
+.btn-primario:disabled {
+  background: var(--sup-3);
+  border-color: var(--linea-fuerte);
+  color: var(--tinta-4);
+  opacity: 1;
+}
+
+.btn-ok {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+  font-variation-settings: 'wght' 600;
+}
+.btn-ok:hover:not(:disabled) { background: var(--verde-vivo); border-color: var(--verde-vivo); }
+
+.btn-peligro {
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: #fff;
+  font-variation-settings: 'wght' 600;
+}
+.btn-peligro:hover:not(:disabled) { background: var(--rojo-vivo); border-color: var(--rojo-vivo); }
+
+/* Fantasma: para lo secundario que no merece un borde compitiendo */
+.btn-plano { background: transparent; border-color: transparent; color: var(--tinta-2); }
+.btn-plano:hover:not(:disabled) { background: var(--sup-3); color: var(--tinta); border-color: transparent; }
+
+.btn-linea { background: transparent; }
+
+.btn-chico { min-height: 2.125rem; padding: 0 var(--e3); font-size: var(--t-13); gap: var(--e1); border-radius: var(--r1); }
+.btn-grande { min-height: var(--toque-grande); padding: 0 var(--e5); font-size: var(--t-16); }
+.btn-ancho { width: 100%; }
+.btn-icono { padding: 0; width: var(--toque); }
+.btn-icono.btn-chico { width: 2.125rem; }
+
+/* Píldora seleccionable: variantes, modificadores, filtros.
+   Activa en grafito, no en naranja: el naranja es acción, no selección. */
+.pildora {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e1);
+  min-height: 2.25rem;
+  padding: 0 var(--e3);
+  border: 1px solid var(--linea);
+  border-radius: var(--r-pill);
+  background: var(--sup-1);
+  color: var(--tinta-2);
+  font-size: var(--t-13);
+  font-variation-settings: 'wght' 500;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background var(--rapido), border-color var(--rapido), color var(--rapido);
+}
+.pildora:hover:not(:disabled) { border-color: var(--linea-viva); color: var(--tinta); }
+.pildora[aria-pressed='true'] {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: #fff;
+  font-variation-settings: 'wght' 600;
+}
+.pildora:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.opciones { display: flex; flex-wrap: wrap; gap: var(--e2); }

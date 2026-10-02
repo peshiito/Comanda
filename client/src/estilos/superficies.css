@@ -1,0 +1,62 @@
+/* ---- Superficies ----
+   La jerarquía la arma el color de fondo: una tarjeta blanca sobre el lienzo
+   de tiza ya se lee como elevada. La sombra sólo la reafirma, nunca la carga. */
+.tarjeta {
+  background: var(--sup-1);
+  border: 1px solid var(--linea);
+  border-radius: var(--r3);
+  padding: var(--e4);
+  box-shadow: var(--sombra-1);
+}
+
+.panel {
+  background: var(--sup-1);
+  border: 1px solid var(--linea);
+  border-radius: var(--r3);
+  overflow: hidden;
+  box-shadow: var(--sombra-1);
+}
+
+.panel > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e2);
+  padding: var(--e3) var(--e4);
+  border-bottom: 1px solid var(--linea);
+  font-family: var(--titulo);
+  font-size: var(--t-14);
+  font-variation-settings: 'wght' 600;
+  letter-spacing: -0.01em;
+  min-height: 3rem;
+}
+
+.panel > .cuerpo { padding: var(--e4); }
+.panel > .cuerpo-ajustado { padding: var(--e2) var(--e4) var(--e4); }
+
+/* ---- Etiquetas de estado ----
+   Píldora llena, sin borde: sobre fondo claro el contenedor teñido ya
+   separa lo suficiente y el borde sólo ensuciaría la forma. */
+.eti {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  font-size: var(--t-12);
+  font-variation-settings: 'wght' 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.eti-neutra { background: var(--sup-3); color: var(--tinta-2); }
+.eti-verde { background: var(--verde-tenue); color: var(--verde-texto); }
+.eti-amarilla { background: var(--amarillo-tenue); color: var(--amarillo-texto); }
+.eti-naranja { background: var(--naranja-tenue); color: var(--marca-texto); }
+.eti-roja { background: var(--rojo-tenue); color: var(--rojo-texto); }
+.eti-azul { background: var(--azul-tenue); color: var(--azul-texto); }
+.eti-marca { background: var(--marca-tenue); color: var(--marca-texto); }
+.eti-tinta { background: var(--tinta); color: #fff; }
+
+.punto { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }

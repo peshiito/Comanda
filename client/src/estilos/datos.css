@@ -1,0 +1,86 @@
+/* ---- Tablas ---- */
+.tabla { width: 100%; border-collapse: collapse; font-size: var(--t-13); }
+.tabla th {
+  padding: var(--e2) var(--e3);
+  text-align: left;
+  font-size: var(--t-12);
+  font-variation-settings: 'wght' 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--tinta-3);
+  border-bottom: 1px solid var(--linea);
+  white-space: nowrap;
+}
+.tabla td { padding: var(--e3); border-bottom: 1px solid var(--linea); vertical-align: top; height: 48px; }
+.tabla tr:last-child td { border-bottom: none; }
+.tabla tbody tr { transition: background var(--rapido); }
+.tabla tbody tr:hover { background: var(--sup-2); }
+.tabla-scroll { overflow-x: auto; margin: 0 calc(var(--e4) * -1); padding: 0 var(--e4); }
+
+/* ---- Lista de totales ---- */
+.totales { display: flex; flex-direction: column; gap: var(--e2); }
+.totales > div { display: flex; align-items: baseline; justify-content: space-between; gap: var(--e4); }
+.totales .total {
+  margin-top: var(--e2);
+  padding-top: var(--e3);
+  border-top: 1px solid var(--linea-fuerte);
+  font-size: var(--t-22);
+  font-variation-settings: 'wght' 560;
+}
+.totales .total span:first-child { font-size: var(--t-13); color: var(--tinta-2); }
+
+/* ---- Barra de progreso de reportes ---- */
+.medidor { height: 6px; background: var(--sup-3); border-radius: var(--r-pill); overflow: hidden; }
+.medidor > div {
+  height: 100%;
+  background: var(--marca);
+  border-radius: var(--r-pill);
+  transition: width var(--normal);
+}
+
+/* ---- Rejilla de KPIs ---- */
+.rejilla-kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--e2);
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e1);
+  padding: var(--e5);
+  background: var(--sup-1);
+  border: 1px solid var(--linea);
+  border-radius: var(--r3);
+  box-shadow: var(--sombra-1);
+}
+
+.kpi-valor {
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-28);
+  font-variation-settings: 'wght' 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.kpi-pie { font-size: var(--t-12); color: var(--tinta-3); }
+
+/* ---- Fila con barra proporcional ---- */
+.barra-dato { display: flex; flex-direction: column; gap: 5px; }
+.barra-dato > .fila-sep { font-size: var(--t-13); }
+
+/* NavLink agrega .active por su cuenta cuando className es un string */
+.tab.active {
+  background: var(--sup-3);
+  color: var(--tinta);
+  font-variation-settings: 'wght' 600;
+}
+.tab.active svg { color: var(--marca); }
+
+/* Aviso de que un movimiento NO toca el cajón: tiene que verse antes de
+   guardar, no después de que el arqueo no cuadre. */
+.caja-aviso {
+  color: var(--azul-texto) !important;
+  font-variation-settings: "wght" 500;
+}

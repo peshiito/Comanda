@@ -1,0 +1,85 @@
+/* ---- Aviso de caja cerrada ---- */
+.panel-cerrado { border-color: var(--marca-linea); background: var(--marca-tenue); }
+.panel-cerrado p { max-width: 52ch; }
+
+.cerrado-icono {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: var(--toque);
+  flex-shrink: 0;
+  border-radius: var(--r2);
+  background: var(--sup-1);
+  color: var(--marca-viva);
+}
+
+.panel-cobrar { border-color: var(--marca-linea); }
+
+/* ---- Fila de cuenta ---- */
+.cuenta-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e3);
+  width: 100%;
+  min-height: 62px;
+  padding: var(--e3);
+  text-align: left;
+  border: 1px solid var(--linea);
+  border-radius: var(--r2);
+  background: var(--sup-1);
+  color: var(--tinta);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--rapido), border-color var(--rapido);
+}
+
+.cuenta-fila:hover { background: var(--sup-2); border-color: var(--linea-viva); }
+.cuenta-fila-datos { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.cuenta-fila-datos > span { min-width: 0; }
+
+.borrador { border-color: var(--linea-fuerte); }
+
+/* ---- Pantalla de cuenta: ticket fijo + carta al lado ---- */
+.cuenta-layout { display: grid; gap: var(--e3); align-items: start; }
+
+@media (min-width: 1040px) {
+  .cuenta-layout { grid-template-columns: minmax(380px, 460px) 1fr; }
+  .cuenta-ticket { position: sticky; top: 72px; max-height: calc(100vh - 88px); overflow-y: auto; }
+}
+
+/* ---- Cobro ---- */
+.medios { display: grid; grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); gap: var(--e2); }
+.pago-linea { display: flex; gap: var(--e2); align-items: flex-end; }
+.division { display: flex; gap: var(--e2); flex-wrap: wrap; }
+
+.pago-tarjeta {
+  border-color: var(--linea-fuerte);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e3);
+}
+
+.vuelto {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--e3);
+  border-radius: var(--r2);
+  background: var(--verde-tenue);
+  border: 1px solid var(--verde-linea);
+  color: var(--verde);
+}
+.vuelto strong { font-variant-numeric: tabular-nums; font-size: var(--t-22); }
+
+.alerta-monto {
+  display: flex;
+  align-items: center;
+  gap: var(--e2);
+  padding: var(--e2) var(--e3);
+  border-radius: var(--r2);
+  background: var(--rojo-tenue);
+  border: 1px solid var(--rojo-linea);
+  color: var(--rojo);
+  font-size: var(--t-13);
+}

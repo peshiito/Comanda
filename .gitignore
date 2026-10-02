@@ -1,0 +1,25 @@
+# Dependencias y compilados
+node_modules/
+dist/
+build/
+
+# Secretos: el JWT_SECRET y las contraseñas de la base viven acá.
+# Sin estas líneas, el primer `git init` se los lleva al repo.
+.env
+.env.*
+!.env.example
+
+# Fotos de la carta: 15 MB que se vuelven a bajar solas con `npm run db:fotos`.
+# Van en disco y no en la base para que el backup siga pesando kilobytes.
+server/uploads/
+
+# Capturas de trabajo y salidas de herramientas
+.playwright-mcp/
+capturas-nuevas/
+
+# Basura de editores y del sistema
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,11 @@
+/* =========================================================================
+   Componentes. Profundidad por bordes y cambio de superficie, no por sombra:
+   lo único que levanta del plano es lo que flota (modales, menús, toasts).
+   Cada archivo es una familia de componentes.
+   ========================================================================= */
+@import './botones.css';
+@import './campos.css';
+@import './superficies.css';
+@import './navegacion.css';
+@import './sobrepuestos.css';
+@import './datos.css';
